@@ -191,7 +191,7 @@ class TopLevel(Frame):
                 (self.sigSubstrates, self.sigKinaseCount) = importSignificantSubstrates(self.file2.get(), self.substrate2kinases)
                 self.load2 = True
                 self.textBox.insert(Tkinter.END, "%d substrates and %d kinases are observed in experiment\n"
-                                % ( len(self.sigSubstrates.keys()), len(self.sigKinaseCount.keys()) )   )
+                                % ( len(self.sigSubstrates), len(self.sigKinaseCount.keys()) )   )
                 self.lineCount += 1
             else:
                 dialog = Tk()
@@ -211,7 +211,7 @@ class TopLevel(Frame):
 
     def initUI(self):
 
-        self.parent.title("Auto RSA")
+        self.parent.title("KASE: Kinome Array Significance Evaluator")
         self.grid()
 
 
