@@ -50,9 +50,8 @@ if __name__ == "__main__":
         for substrate in substratesChosen:
             kinases = substrate2kinases[substrate]
             for kinase in kinases:
-                #k = allKinases.keys().index(kinase)
                 simulations[kinase][s] += 1
-        if (s % 10 == 9):   print "Simulation "+str(s+1)+" complete\t"+mt.elapsed()
+        if (s % 1000 == 999):   print "Simulation "+str(s+1)+" complete\t"+mt.elapsed()
 
     meanSimulations = [0 for x in allKinases.keys()]
     stdSimulations = [0 for x in allKinases.keys()]
@@ -93,6 +92,5 @@ if __name__ == "__main__":
 
     for result in results:
         (p, kinase, z) = result
-        #print str(p)+"\t"+kinase+"\t"+str(z)
         print kinase+"\t"+str(z)+"\t"+str(p)
         outFile.write(kinase+"\t"+str(z)+"\t"+str(p)+"\n")

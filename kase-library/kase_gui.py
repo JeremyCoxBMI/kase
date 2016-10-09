@@ -4,16 +4,13 @@ __author__ = 'Jeremy'
 
 
 """
-Utilized code from
-
+Special thanks to
 ZetCode Tkinter tutorial
-
 Author: Jan Bodnar
-Last modified: November 2015
 Website: www.zetcode.com
 """
 
-#from Tkinter import Tk, Frame, BOTH, grid, Entry, Label
+
 from Tkinter import *
 import tkFileDialog
 from importTestArray import importSubstrateDefinitionsFile
@@ -149,13 +146,8 @@ class TopLevel(Frame):
             self.textBox.see(Tkinter.END)
             self.lineCount += 1
 
-            # outFile.write("(kinase)\t(z-score)\t(p-value 2 tail)\n")
-
             for result in self.results:
                 (p, kinase, z) = result
-                #print str(p)+"\t"+kinase+"\t"+str(z)
-                # print kinase+"\t"+str(z)+"\t"+str(p)
-                # self.textBox.insert(Tkinter.END, kinase+"\t"+str(z)+"\t"+str(p)+"\n")
                 print kinase+"\t%.03f\t%.03f"%(z,p)
                 self.textBox.insert(Tkinter.END, kinase+"\t%.03f\t%.03f\n"%(z,p))
                 self.textBox.see(Tkinter.END)
@@ -174,6 +166,9 @@ class TopLevel(Frame):
             # substrate2kinases     text to (list of text) dictionary
             # allKinases            text to (integer count) dictionary
             self.load1 = True
+            self.textBox.insert(Tkinter.END, "%d substrates and %d kinases are defined in the source file\n"
+                                % ( len(self.substrate2kinases.keys()), len(self.allKinases.keys()) )   )
+            self.lineCount += 1
         else:
             dialog = Tk()
             dialog.grid()
@@ -195,6 +190,9 @@ class TopLevel(Frame):
             if self.load1:
                 (self.sigSubstrates, self.sigKinaseCount) = importSignificantSubstrates(self.file2.get(), self.substrate2kinases)
                 self.load2 = True
+                self.textBox.insert(Tkinter.END, "%d substrates and %d kinases are observed in experiment\n"
+                                % ( len(self.sigSubstrates.keys()), len(self.sigKinaseCount.keys()) )   )
+                self.lineCount += 1
             else:
                 dialog = Tk()
                 dialog.grid()
@@ -214,7 +212,6 @@ class TopLevel(Frame):
     def initUI(self):
 
         self.parent.title("Auto RSA")
-        #self.pack(fill=BOTH, expand=1)
         self.grid()
 
 
@@ -237,11 +234,7 @@ class TopLevel(Frame):
         self.e5 = Entry(self.parent, textvariable=self.outFilename, width=100)
 
         self.b1 = Button(self.parent, text=' Browse  ', command=self.browseSubKinDef).grid(row=0, column=2)
-        #self.b12 = Button(self.parent, text=' Load  ', command=self.openSubKinDef).grid(row=0, column=3)
-
         self.b2 = Button(self.parent, text=' Browse  ', command=self.browseSubSigList).grid(row=1, column=2)
-        #self.b22 = Button(self.parent, text=' Load  ', command=self.openSubSigList).grid(row=1, column=3)
-
         self.b5 = Button(self.parent, text=' Browse  ', command=self.browseOutFilename).grid(row=5, column=2)
 
         self.e1.grid(row=0, column=1)
