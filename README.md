@@ -28,7 +28,7 @@ for each kinase given that x substrates are chosen, where x equals the actual nu
 Using this approximated distribution, a z-score and subsequent p-value (two-tailed) is calculated for each kinase.
 
 An inexact approximation:
-    Standard normal distribution is used as simplifying assumption; although we expect a skewed distribution due ot proximity to zero.
+    Standard normal distribution is used as simplifying assumption; although we expect a skewed distribution due to proximity to zero.
     While a large n=100,000 (random) simulations can be accomodated, this is a tiny fraction of all the true
     combinations.  141 C 10 ~= 617 trillion
     Nonetheless, this is sufficent to rank and compare effect size.
@@ -41,10 +41,13 @@ Note that three files are included as example input/output (in order to load in 
     SigSubstrates.csv
     output.tsv
 
+Comand line and pipeline integration possible with kase_cmd_line.py
 
 ##Authors
 
 2016 Oct 9 UC Revolution Hackathon
             Jeremy Cox          (JeremyCoxBMI@github.com)
+
             and
+
             Erica DePasquale    (careyea@github.com)        author of original tool
