@@ -58,7 +58,7 @@ class TopLevel(Frame):
             # label1 = Label(dialog, text="You must PICK and LOAD source files first").grid(row=0)
             # ok = Button(dialog, text=' OK ', command=dialog.quit).grid(row=1)
             print "Simulations not started due to input file error"
-            self.textBox.insert(END, "Simulations not started due to input file error")
+            #self.textBox.insert(END, "Simulations not started due to input file error")
         else:
             #print "numSimulations = "+self.numSimulations.get()
             numSubstrates = len(self.sigSubstrates)
@@ -83,7 +83,7 @@ class TopLevel(Frame):
                         simulations[kinase][s] += 1
                 if (s % 100 == 99):
                     print "Simulation "+str(s+1)+" complete\t"+mt.elapsed()
-                    self.textBox.insert(END, "Simulation "+str(s+1)+" complete\t"+mt.elapsed())
+                    #self.textBox.insert(END, "Simulation "+str(s+1)+" complete\t"+mt.elapsed())
                 self.currSim.set(str(s))
 
             meanSimulations = [0 for x in self.allKinases.keys()]
@@ -116,21 +116,21 @@ class TopLevel(Frame):
                 self.results.append( (self.pvalueKinases[k], self.allKinases.keys()[k], self.zscoreKinases[k]) )
 
             print "sorting results\t"+mt.elapsed()
-            self.textBox.insert(END, "sorting results\t"+mt.elapsed())
+            #self.textBox.insert(END, "sorting results\t"+mt.elapsed())
             self.results.sort()
             print "sorting complete\t"+mt.elapsed()
-            self.textBox.insert(END, "sorting complete\t"+mt.elapsed())
+            #self.textBox.insert(END, "sorting complete\t"+mt.elapsed())
 
             # outFile = open(sys.argv[4],'w')
             print "(kinase)\t(z-score)\t(p-value 2 tail)"
-            self.textBox.insert(END, "(kinase)\t(z-score)\t(p-value 2 tail)")
+            #self.textBox.insert(END, "(kinase)\t(z-score)\t(p-value 2 tail)")
             # outFile.write("(kinase)\t(z-score)\t(p-value 2 tail)\n")
 
             for result in self.results:
                 (p, kinase, z) = result
                 #print str(p)+"\t"+kinase+"\t"+str(z)
                 print kinase+"\t"+str(z)+"\t"+str(p)
-                self.textBox.insert(END, kinase+"\t"+str(z)+"\t"+str(p))
+                #self.textBox.insert(END, kinase+"\t"+str(z)+"\t"+str(p))
                 # outFile.write(kinase+"\t"+str(z)+"\t"+str(p)+"\n")
 
     def et(self):
