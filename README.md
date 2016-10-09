@@ -23,7 +23,7 @@ https://www.continuum.io/downloads
 ## Purpose
 
 Kinome Arrays often give confusing results because each detector corresponds to multiple kinases.
-Therefore, using simulation, this program approximates a parametric analysis of the distribution of number of hits
+Therefore, using simulation, this program approximates a permutation estimation of the distribution of number of hits
 for each kinase given that x substrates are chosen, where x equals the actual number of substrates chosen.
 Using this approximated distribution, a z-score and subsequent p-value (two-tailed) is calculated for each kinase.
 
